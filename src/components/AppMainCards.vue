@@ -83,6 +83,7 @@
 
 main {
     background-color: brown;
+    height: 100vh;
 
 }
 
