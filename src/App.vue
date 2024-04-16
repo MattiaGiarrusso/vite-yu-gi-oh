@@ -29,15 +29,18 @@
       let apiUrl = store.endpoint;
       if (store.searchArchetype !== '') {
 
-        apiUrl += `&archetype=${store.searchArchetype.archetype_name}`
+        queryParams.archetype = store.searchArchetype
 
         axios.get(apiUrl, { params: queryParams })
         .then((response) => {
           store.cardInfo = response.data.data;
         });
       }
-      
+
       else {
+        
+        delete queryParams.archetype
+
         axios.get(store.endpoint, { params: queryParams })
         .then((response) => {
           store.cardInfo = response.data.data;
