@@ -4,11 +4,13 @@
   import AppHeader from './components/AppHeader.vue';
   import AppMainCards from './components/AppMainCards.vue';
   import AppSearch from './components/AppSearch.vue';
+  import AppCard from './components/AppCard.vue';
 
   export default {
     components: {
       AppHeader,
       AppMainCards,
+      AppCard,
       AppSearch
     },
     data () {
@@ -18,19 +20,29 @@
     },
     methods: {
       getCardFromApi() {
-        let apiUrl = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
 
-        const queryParams = {};
+      const queryParams = {
+        num: 20,
+        offset: 0
+      };
 
-        // if(store.searchArchetype === 'Archetype') {
-        // }
+      let apiUrl = store.endpoint;
+      if (store.searchArchetype !== '') {
 
-        axios.get(apiUrl, {
-        params: queryParams
-        })
+        apiUrl += `&archetype=${store.searchArchetype.archetype_name}`
+
+        axios.get(apiUrl, { params: queryParams })
         .then((response) => {
-          store.cardInfo = response.data.data
+          store.cardInfo = response.data.data;
         });
+      }
+      
+      else {
+        axios.get(store.endpoint, { params: queryParams })
+        .then((response) => {
+          store.cardInfo = response.data.data;
+        });
+      }
       }
     },
     mounted() {

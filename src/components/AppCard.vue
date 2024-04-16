@@ -12,8 +12,9 @@
 
     <div class="card my-2" style="width: calc(100%/5);">
         <img :src="cardList.card_images[0].image_url_small" class="card-img-top" :alt="cardList.name">
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
             <h5 class="card-title "><strong>{{ cardList.name }}</strong></h5>
+            <span class="card-text"><strong>{{ cardList.archetype }}</strong></span>
             <span class="card-text">{{ cardList.type }}</span>
             <p class="card-text"><small>{{ cardList.desc }}</small></p>
         </div>
