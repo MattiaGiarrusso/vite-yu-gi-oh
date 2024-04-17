@@ -29,7 +29,7 @@ export default {
     <div class="container bg-black d-flex py-2">
 
       <select class="form-select" v-model="store.searchArchetype">
-        <option value="" selected>Seleziona l'archetype</option>
+        <option value="">Seleziona l'archetype</option>
         <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{ archetype.archetype_name }}</option>
       </select>
       

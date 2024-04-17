@@ -22,7 +22,7 @@
       getCardFromApi() {
 
       const queryParams = {
-        num: 20,
+        num: 40,
         offset: 0
       };
 
